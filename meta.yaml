@@ -1,0 +1,40 @@
+# general notes
+# http://conda.pydata.org/docs/build_tutorials/pkgs2.html
+# http://conda.pydata.org/docs/building/meta-yaml.html
+# existing recipes: https://github.com/conda/conda-recipes
+# https://github.com/conda/conda-recipes/tree/master/python
+#
+# build this with
+# $ conda build --debug .
+
+package:
+  name: python_template_with_config
+  version: "0.1"
+
+source:
+#  git_rev:
+  git_url: https://github.com/ianozsvald/python_template_with_config.git
+#  path: /home/ian/workspace/personal_projects/python_template_with_config/
+      
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pytest
+
+  run:
+    - python
+    - numpy >=1.10
+    - pytest
+
+# check we built our module ok and we can import it in the test env
+# this is (I believe) a simple sanity check
+test:
+  imports:
+    - python_template_with_config
+
+about:
+  home: https://github.com/ianozsvald/python_template_with_config
+  license:
+  license_file:
